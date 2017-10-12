@@ -48,12 +48,27 @@ class App extends Component {
 
   };
 
-  
+  _addNewCredit = (newDebit) =>{
+    const debits = [...this.state.debits];
+    debits.push(newDebit);
+    this.setState({debits});
+  }
+  _addNewCredit = (newCredit)=>{
+    const credits = [...this.state.credits];
+    credits.push(newCredit);
+    this.setState({credits});
+  }
 
+  componentWillMount(){
+    this._getDebits();
+    this._getCredits();
+  }
   
   render() {
 
     const accountBalance = this._calculateAccountBalance();
+
+
     
     const AccountBalanceWrapper = () => {
       return (<AccountBalance accountBalance={this.state.accountBalance} />)
@@ -61,7 +76,12 @@ class App extends Component {
     const UserProfileWrapper = () => {
       return (<UserProfile user={this.state.user} />)
     }
-
+    const DebitsPageComponent = () => (
+      <DebitsPage
+        debits = {this.state.debits}
+          addNewDebit = {this._addNewDebit}
+          accountBalance = {accountBalance} />
+    )
     const CreditsPageComponent = () => (
       <CreditPage
         credits={this.state.credits}
