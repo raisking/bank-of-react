@@ -4,6 +4,7 @@ import Home from './components/Home'
 import AccountBalance from './components/AccountBalance';
 import UserProfile from './components/UserProfile';
 import CreditPage from './components/CreditPage';
+import DebitsPage from './components/DebitsPage'
 
 import axios from 'axios'
 
